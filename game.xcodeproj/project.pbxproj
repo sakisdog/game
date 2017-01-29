@@ -16,6 +16,10 @@
 		5127B1181E3DB5F000232F9F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5127B1171E3DB5F000232F9F /* Assets.xcassets */; };
 		5127B11B1E3DB5F000232F9F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5127B1191E3DB5F000232F9F /* LaunchScreen.storyboard */; };
 		5127B1261E3DB5F000232F9F /* gameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5127B1251E3DB5F000232F9F /* gameTests.swift */; };
+		5127B1311E3DC56100232F9F /* TestScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 5127B1301E3DC56100232F9F /* TestScene.sks */; };
+		5127B1351E3DC61800232F9F /* TestScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5127B1341E3DC61800232F9F /* TestScene.swift */; };
+		5127B1371E3E0F5D00232F9F /* PhysicsScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 5127B1361E3E0F5D00232F9F /* PhysicsScene.sks */; };
+		5127B1391E3E0F8400232F9F /* PhysicsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5127B1381E3E0F8400232F9F /* PhysicsScene.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +46,10 @@
 		5127B1211E3DB5F000232F9F /* gameTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = gameTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5127B1251E3DB5F000232F9F /* gameTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gameTests.swift; sourceTree = "<group>"; };
 		5127B1271E3DB5F000232F9F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5127B1301E3DC56100232F9F /* TestScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TestScene.sks; sourceTree = "<group>"; };
+		5127B1341E3DC61800232F9F /* TestScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestScene.swift; sourceTree = "<group>"; };
+		5127B1361E3E0F5D00232F9F /* PhysicsScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = PhysicsScene.sks; sourceTree = "<group>"; };
+		5127B1381E3E0F8400232F9F /* PhysicsScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhysicsScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +100,10 @@
 				5127B1171E3DB5F000232F9F /* Assets.xcassets */,
 				5127B1191E3DB5F000232F9F /* LaunchScreen.storyboard */,
 				5127B11C1E3DB5F000232F9F /* Info.plist */,
+				5127B1301E3DC56100232F9F /* TestScene.sks */,
+				5127B1341E3DC61800232F9F /* TestScene.swift */,
+				5127B1361E3E0F5D00232F9F /* PhysicsScene.sks */,
+				5127B1381E3E0F8400232F9F /* PhysicsScene.swift */,
 			);
 			path = game;
 			sourceTree = "<group>";
@@ -188,11 +200,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5127B1311E3DC56100232F9F /* TestScene.sks in Resources */,
 				5127B1161E3DB5F000232F9F /* Main.storyboard in Resources */,
 				5127B10D1E3DB5F000232F9F /* GameScene.sks in Resources */,
 				5127B1181E3DB5F000232F9F /* Assets.xcassets in Resources */,
 				5127B11B1E3DB5F000232F9F /* LaunchScreen.storyboard in Resources */,
 				5127B10F1E3DB5F000232F9F /* Actions.sks in Resources */,
+				5127B1371E3E0F5D00232F9F /* PhysicsScene.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -210,7 +224,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5127B1351E3DC61800232F9F /* TestScene.swift in Sources */,
 				5127B1111E3DB5F000232F9F /* GameScene.swift in Sources */,
+				5127B1391E3E0F8400232F9F /* PhysicsScene.swift in Sources */,
 				5127B1131E3DB5F000232F9F /* GameViewController.swift in Sources */,
 				5127B10B1E3DB5F000232F9F /* AppDelegate.swift in Sources */,
 			);
