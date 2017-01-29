@@ -14,8 +14,8 @@ class TestScene: SKScene, SKPhysicsContactDelegate {
         left = -(self.frame.width/2.0)
         right = (self.frame.width/2.0)
 
-        //initSceneBalls()
-        initSceneBlocks()
+        initSceneBalls()
+        //initSceneBlocks()
     }
 
     func initSceneBlocks() {
@@ -41,8 +41,14 @@ class TestScene: SKScene, SKPhysicsContactDelegate {
         //self.physicsBody = SKPhysicsBody(edgeLoopFrom: self.frame)
 
         //self.physicsWorld.gravity = CGVectorMake(0, self.physicsWorld.gravity.dy * -1.0)
-        for _ in 0 ..< 30 {
-            self.addChild(self.newBall())
+        for i in 0 ..< 30 {
+            let ball = newBall()
+            let x: CGFloat = CGFloat(CGFloat(i) * self.frame.width / 10.0)
+            let y = i % 10
+            ball.position = CGPoint(x: x, y: 30 * CGFloat(y))
+            ball.physicsBody?.affectedByGravity = false
+            ball.physicsBody?.contactTestBitMask = 1
+            self.addChild(ball)
         }
     }
 
@@ -52,7 +58,6 @@ class TestScene: SKScene, SKPhysicsContactDelegate {
         let color = colors[index]
         // このradiusの値とphysicsbodyの値の設定は同じにしとくっポイ
         let ball = SKShapeNode(circleOfRadius: 30.0)
-        ball.position = CGPoint(x:self.frame.midX, y:self.frame.midY)
         ball.strokeColor = SKColor.black
         ball.fillColor = color
         ball.physicsBody = SKPhysicsBody(circleOfRadius: 30.0)
@@ -68,8 +73,6 @@ class TestScene: SKScene, SKPhysicsContactDelegate {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch: UITouch = touches.first!
         let location = touch.location(in: self)
-        let action = SKAction.move(to: location, duration: 0.5)
-
 
         let colors:[SKColor] = [.blue, .red, .green, .yellow, .purple]
         let index = (Int)(arc4random_uniform(4))
@@ -91,5 +94,7 @@ class TestScene: SKScene, SKPhysicsContactDelegate {
                 block.removeFromParent()
             }
         }
+        contact.bodyA.node?.physicsBody?.affectedByGravity = true
+        contact.bodyB.node?.physicsBody?.affectedByGravity = true
     }
 }
