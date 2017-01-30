@@ -20,6 +20,12 @@
 		5127B1351E3DC61800232F9F /* TestScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5127B1341E3DC61800232F9F /* TestScene.swift */; };
 		5127B1371E3E0F5D00232F9F /* PhysicsScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 5127B1361E3E0F5D00232F9F /* PhysicsScene.sks */; };
 		5127B1391E3E0F8400232F9F /* PhysicsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5127B1381E3E0F8400232F9F /* PhysicsScene.swift */; };
+		515E5A1A1E3F76850069942B /* Ball.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515E5A191E3F76850069942B /* Ball.swift */; };
+		515E5A1F1E3F7F1D0069942B /* piano_do.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 515E5A1C1E3F7F1D0069942B /* piano_do.mp3 */; };
+		515E5A201E3F7F1D0069942B /* piano_mi.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 515E5A1D1E3F7F1D0069942B /* piano_mi.mp3 */; };
+		515E5A211E3F7F1D0069942B /* piano_so.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 515E5A1E1E3F7F1D0069942B /* piano_so.mp3 */; };
+		515E5A231E3F84FC0069942B /* piano_fa.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 515E5A221E3F84FC0069942B /* piano_fa.mp3 */; };
+		515E5A251E3F85040069942B /* piano_re.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 515E5A241E3F85040069942B /* piano_re.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +56,12 @@
 		5127B1341E3DC61800232F9F /* TestScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestScene.swift; sourceTree = "<group>"; };
 		5127B1361E3E0F5D00232F9F /* PhysicsScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = PhysicsScene.sks; sourceTree = "<group>"; };
 		5127B1381E3E0F8400232F9F /* PhysicsScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhysicsScene.swift; sourceTree = "<group>"; };
+		515E5A191E3F76850069942B /* Ball.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ball.swift; sourceTree = "<group>"; };
+		515E5A1C1E3F7F1D0069942B /* piano_do.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = piano_do.mp3; sourceTree = "<group>"; };
+		515E5A1D1E3F7F1D0069942B /* piano_mi.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = piano_mi.mp3; sourceTree = "<group>"; };
+		515E5A1E1E3F7F1D0069942B /* piano_so.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = piano_so.mp3; sourceTree = "<group>"; };
+		515E5A221E3F84FC0069942B /* piano_fa.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = piano_fa.mp3; sourceTree = "<group>"; };
+		515E5A241E3F85040069942B /* piano_re.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = piano_re.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +85,7 @@
 		5127B0FE1E3DB5F000232F9F = {
 			isa = PBXGroup;
 			children = (
+				515E5A1B1E3F7EE60069942B /* sound */,
 				5127B1091E3DB5F000232F9F /* game */,
 				5127B1241E3DB5F000232F9F /* gameTests */,
 				5127B1081E3DB5F000232F9F /* Products */,
@@ -104,6 +117,7 @@
 				5127B1341E3DC61800232F9F /* TestScene.swift */,
 				5127B1361E3E0F5D00232F9F /* PhysicsScene.sks */,
 				5127B1381E3E0F8400232F9F /* PhysicsScene.swift */,
+				515E5A191E3F76850069942B /* Ball.swift */,
 			);
 			path = game;
 			sourceTree = "<group>";
@@ -115,6 +129,19 @@
 				5127B1271E3DB5F000232F9F /* Info.plist */,
 			);
 			path = gameTests;
+			sourceTree = "<group>";
+		};
+		515E5A1B1E3F7EE60069942B /* sound */ = {
+			isa = PBXGroup;
+			children = (
+				515E5A1C1E3F7F1D0069942B /* piano_do.mp3 */,
+				515E5A241E3F85040069942B /* piano_re.mp3 */,
+				515E5A1D1E3F7F1D0069942B /* piano_mi.mp3 */,
+				515E5A221E3F84FC0069942B /* piano_fa.mp3 */,
+				515E5A1E1E3F7F1D0069942B /* piano_so.mp3 */,
+			);
+			name = sound;
+			path = game/sound;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -202,12 +229,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				5127B1311E3DC56100232F9F /* TestScene.sks in Resources */,
+				515E5A201E3F7F1D0069942B /* piano_mi.mp3 in Resources */,
+				515E5A211E3F7F1D0069942B /* piano_so.mp3 in Resources */,
 				5127B1161E3DB5F000232F9F /* Main.storyboard in Resources */,
 				5127B10D1E3DB5F000232F9F /* GameScene.sks in Resources */,
+				515E5A1F1E3F7F1D0069942B /* piano_do.mp3 in Resources */,
 				5127B1181E3DB5F000232F9F /* Assets.xcassets in Resources */,
+				515E5A251E3F85040069942B /* piano_re.mp3 in Resources */,
 				5127B11B1E3DB5F000232F9F /* LaunchScreen.storyboard in Resources */,
 				5127B10F1E3DB5F000232F9F /* Actions.sks in Resources */,
 				5127B1371E3E0F5D00232F9F /* PhysicsScene.sks in Resources */,
+				515E5A231E3F84FC0069942B /* piano_fa.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -225,6 +257,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				515E5A1A1E3F76850069942B /* Ball.swift in Sources */,
 				5127B1351E3DC61800232F9F /* TestScene.swift in Sources */,
 				5127B1111E3DB5F000232F9F /* GameScene.swift in Sources */,
 				5127B1391E3E0F8400232F9F /* PhysicsScene.swift in Sources */,
