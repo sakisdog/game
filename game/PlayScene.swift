@@ -15,6 +15,8 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
     var screenBallCount: Int = 0
     var level: Int = 1
     var life: Int = 3
+    var isInvincible: Bool = false
+
 
     // MARK: - methods
     override func didMove(to view: SKView) {
@@ -53,7 +55,7 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
 
     // MARK: - private
     func touchMoved(toPoint pos : CGPoint) {
-        let moveAction = SKAction.move(to: pos, duration: 0.1)
+        let moveAction = SKAction.move(to: pos, duration: 0.2)
         myBall.run(moveAction)
     }
 
@@ -70,7 +72,8 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
     func initMyBall() {
         myBall = MyBall(circleOfRadius: 80.0)
         myBall.colorType = .red
-        myBall.fillColor = myBall.colorType.color()
+        myBall.strokeColor = myBall.colorType.color()
+        myBall.lineWidth = CGFloat(life * 15)
         myBall.position = CGPoint(x: self.frame.midX, y: self.frame.midY - 300)
         self.addChild(myBall)
     }
@@ -127,9 +130,13 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
     }
 
     func decreaseLife() {
+        if isInvincible {
+            return
+        }
         life -= 1
         scoreLabel.fontColor = .gray
-        myBall.glowWidth += 15
+        myBall.glowWidth += 1
+        myBall.lineWidth = CGFloat(life * 12)
 
         if life == 0 {
             messageLabel.fontSize = 50
@@ -167,6 +174,21 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
             myBall.removeFromParent()
             life = 0
         }
+    }
+
+    func becomeInvincible() {
+        if isInvincible {
+            return
+        }
+
+        isInvincible = true
+        myBall.fillColor = .cyan
+        self.run(SKAction.sequence([
+            SKAction.wait(forDuration: 3.0),
+            ]), completion: {
+                self.isInvincible = false
+                self.myBall.fillColor = .clear
+        })
     }
 
     func vanishBall(ball: Ball) {
@@ -217,7 +239,7 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
     func didBegin(_ contact: SKPhysicsContact) {
         if let nodeA = contact.bodyA.node as? Ball,
             let nodeB = contact.bodyB.node as? Ball {
-            if nodeA.fillColor == nodeB.fillColor {
+            if nodeA.colorType == nodeB.colorType {
                 addVanishmentEffect(ball: nodeA)
                 addVanishmentEffect(ball: nodeB)
 
@@ -229,7 +251,7 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
 
         if let nodeA = contact.bodyA.node as? MyBall,
             let nodeB = contact.bodyB.node as? Ball {
-            if nodeA.fillColor == nodeB.fillColor {
+            if nodeA.colorType == nodeB.colorType {
                 pointUp()
                 bonusPoint += 1
             } else {
@@ -238,12 +260,13 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
             }
             playsSoundBallHits()
             vanishBall(ball: nodeB)
+            becomeInvincible()
             nodeB.removeFromParent()
             screenBallCount -= 1
         }
         if let nodeA = contact.bodyA.node as? Ball,
             let nodeB = contact.bodyB.node as? MyBall {
-            if nodeA.fillColor == nodeB.fillColor {
+            if nodeA.colorType == nodeB.colorType {
                 pointUp()
                 bonusPoint += 1
             } else {
@@ -252,6 +275,7 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
             }
             playsSoundBallHits()
             vanishBall(ball: nodeA)
+            becomeInvincible()
             nodeA.removeFromParent()
             screenBallCount -= 1
         }
