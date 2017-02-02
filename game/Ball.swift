@@ -10,7 +10,9 @@ class Ball: SKShapeNode {
         self.lineWidth = 0
 
         self.physicsBody = SKPhysicsBody(circleOfRadius: 50.0)
+        self.physicsBody?.categoryBitMask = 1
         self.physicsBody?.contactTestBitMask = 1
+        self.physicsBody?.collisionBitMask = 1
         self.physicsBody?.restitution = 1.0
         self.physicsBody?.linearDamping = 0
         self.physicsBody?.friction = 0

@@ -1,13 +1,16 @@
 import SpriteKit
 import GameplayKit
+import AudioToolbox
 
 class PlayScene: SKScene, SKPhysicsContactDelegate {
     // MARK: - properties
     let scoreLabel = SKLabelNode()
     let messageLabel = SKLabelNode()
+    let highScoreLabel = SKLabelNode()
     var myBall: MyBall!
     var lastContactBallName: String = ""
     var totalScore: Int = 0
+    var highScore: Int = 0
     var basePoint: Int = 1
     var bonusPoint: Int = 0
     let colors:[ballColors] = [.red, .blue, .green, .yellow, .purple]
@@ -16,12 +19,19 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
     var level: Int = 1
     var life: Int = 3
     var isInvincible: Bool = false
+    let lightImpactGenerator = UIImpactFeedbackGenerator(style: .light)
+    let heavyImpactGenerator = UIImpactFeedbackGenerator(style: .heavy)
+    let generator = UINotificationFeedbackGenerator()
+    let userDefaults = UserDefaults.standard
 
 
     // MARK: - methods
     override func didMove(to view: SKView) {
         self.physicsBody = SKPhysicsBody(edgeLoopFrom: self.frame)
         self.physicsWorld.contactDelegate = self
+        lightImpactGenerator.prepare()
+        heavyImpactGenerator.prepare()
+        generator.prepare()
 
         initScoreLabel()
         initMyBall()
@@ -70,10 +80,10 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
     }
 
     func initMyBall() {
-        myBall = MyBall(circleOfRadius: 80.0)
+        myBall = MyBall(circleOfRadius: 50.0)
         myBall.colorType = .red
         myBall.strokeColor = myBall.colorType.color()
-        myBall.lineWidth = CGFloat(life * 15)
+        myBall.lineWidth = CGFloat(life * 5)
         myBall.position = CGPoint(x: self.frame.midX, y: self.frame.midY - 300)
         self.addChild(myBall)
     }
@@ -87,6 +97,11 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
         let colorType: ballColors = colors[index]
         ball.colorType = colorType
         ball.fillColor = colorType.color()
+        if colorType == .red {
+            ball.physicsBody?.categoryBitMask = 3
+            ball.physicsBody?.contactTestBitMask = 3
+            ball.physicsBody?.collisionBitMask = 3
+        }
         ball.position = CGPoint(x: myBall.frame.midX, y: self.frame.maxY - 20.0)
         self.addChild(ball)
 
@@ -117,8 +132,22 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
         default:
             soundFile = "pianoC.mp3"
         }
-        let action = SKAction.playSoundFileNamed(soundFile, waitForCompletion: true)
+        //let action = SKAction.playSoundFileNamed(soundFile, waitForCompletion: true)
+        let action = SKAction.playSoundFileNamed(soundFile, waitForCompletion: false)
         self.run(action)
+    }
+
+    func feedbackContact(times: Int) {
+        switch times {
+        case 1:
+            lightImpactGenerator.impactOccurred()
+        case 2:
+            generator.notificationOccurred(.warning)
+        case 3:
+            generator.notificationOccurred(.error)
+        default:
+            lightImpactGenerator.impactOccurred()
+        }
     }
 
     // Point fuction
@@ -136,18 +165,35 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
         life -= 1
         scoreLabel.fontColor = .gray
         myBall.glowWidth += 1
-        myBall.lineWidth = CGFloat(life * 12)
+        myBall.lineWidth = CGFloat(life * 5)
 
         if life == 0 {
-            messageLabel.fontSize = 50
-            messageLabel.fontColor = .black
+            messageLabel.fontSize = 70
+            messageLabel.fontColor = .gray
             messageLabel.fontName = "Helvetica"
             messageLabel.text = "GAME OVER"
             messageLabel.zPosition = 100
-            messageLabel.position = CGPoint(x: self.frame.midX, y: self.frame.midY - 50)
+            messageLabel.position = CGPoint(x: self.frame.midX, y: self.frame.midY - 100)
             self.addChild(messageLabel)
 
             myBall.removeFromParent()
+
+
+            highScore = userDefaults.integer(forKey: "highScore")
+            if totalScore > highScore {
+                highScore = totalScore
+                userDefaults.set(highScore, forKey: "highScore")
+                highScoreLabel.text = "NEW SCORE! : \(highScore)"
+                highScoreLabel.fontColor = .orange
+            } else {
+                highScoreLabel.text = "HIGH SCORE : \(highScore)"
+                highScoreLabel.fontColor = .gray
+            }
+            highScoreLabel.fontSize = 40
+            highScoreLabel.fontName = "Helvetica"
+            highScoreLabel.zPosition = 100
+            highScoreLabel.position = CGPoint(x: self.frame.midX, y: self.frame.midY - 150)
+            self.addChild(highScoreLabel)
         }
     }
 
@@ -180,14 +226,45 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
         if isInvincible {
             return
         }
-
         isInvincible = true
-        myBall.fillColor = .cyan
+        self.myBall.physicsBody?.categoryBitMask = 2
+        self.myBall.physicsBody?.contactTestBitMask = 2
+        self.myBall.physicsBody?.collisionBitMask = 2
+
+        let fade =
+            SKAction.sequence([
+                SKAction.hide(),
+                SKAction.wait(forDuration: 0.3),
+                SKAction.unhide(),
+                SKAction.wait(forDuration: 0.3),
+                SKAction.hide(),
+                SKAction.wait(forDuration: 0.3),
+                SKAction.unhide(),
+                SKAction.wait(forDuration: 0.3),
+                SKAction.hide(),
+                SKAction.wait(forDuration: 0.3),
+                SKAction.unhide(),
+                SKAction.wait(forDuration: 0.3),
+                SKAction.hide(),
+                SKAction.wait(forDuration: 0.3),
+                SKAction.unhide(),
+                SKAction.wait(forDuration: 0.3),
+                SKAction.hide(),
+                SKAction.wait(forDuration: 0.3),
+                SKAction.unhide(),
+                SKAction.wait(forDuration: 0.3),
+                ])
+
+        self.myBall.run(fade)
+
         self.run(SKAction.sequence([
             SKAction.wait(forDuration: 3.0),
             ]), completion: {
                 self.isInvincible = false
-                self.myBall.fillColor = .clear
+                self.myBall.removeAllActions()
+                self.myBall.physicsBody?.categoryBitMask = 1
+                self.myBall.physicsBody?.contactTestBitMask = 1
+                self.myBall.physicsBody?.collisionBitMask = 1
         })
     }
 
@@ -198,7 +275,10 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
             addVanishmentEffect(ball: ball)
         }
     }
+
     func addGameOverEffect(myBall: MyBall) {
+        feedbackContact(times: 2)
+
         let radius = myBall.frame.size.width / 2
         if radius < 30 {
             return
@@ -254,13 +334,15 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
             if nodeA.colorType == nodeB.colorType {
                 pointUp()
                 bonusPoint += 1
+                feedbackContact(times: 1)
             } else {
                 decreaseLife()
                 bonusPoint = 0
+                becomeInvincible()
+                feedbackContact(times: 2)
             }
             playsSoundBallHits()
             vanishBall(ball: nodeB)
-            becomeInvincible()
             nodeB.removeFromParent()
             screenBallCount -= 1
         }
@@ -269,9 +351,12 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
             if nodeA.colorType == nodeB.colorType {
                 pointUp()
                 bonusPoint += 1
+                feedbackContact(times: 1)
             } else {
                 decreaseLife()
                 bonusPoint = 0
+                becomeInvincible()
+                feedbackContact(times: 2)
             }
             playsSoundBallHits()
             vanishBall(ball: nodeA)
