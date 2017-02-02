@@ -8,6 +8,7 @@ class Ball: SKShapeNode {
 
         self.strokeColor = SKColor.black
         self.lineWidth = 0
+        self.zPosition = 1
 
         self.physicsBody = SKPhysicsBody(circleOfRadius: 50.0)
         self.physicsBody?.categoryBitMask = 1

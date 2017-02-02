@@ -13,7 +13,7 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
     var highScore: Int = 0
     var basePoint: Int = 1
     var bonusPoint: Int = 0
-    let colors:[ballColors] = [.red, .blue, .green, .yellow, .purple]
+    let colors:[ballColors] = [.red, .blue, .green, .yellow, .purple, ]
     var dropBallCount: Int = 0
     var screenBallCount: Int = 0
     var level: Int = 1
@@ -65,7 +65,7 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
 
     // MARK: - private
     func touchMoved(toPoint pos : CGPoint) {
-        let moveAction = SKAction.move(to: pos, duration: 0.2)
+        let moveAction = SKAction.move(to: pos, duration: 0.1)
         myBall.run(moveAction)
     }
 
@@ -75,6 +75,7 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
         scoreLabel.fontSize = 300
         scoreLabel.fontName = "Helvetica"
         scoreLabel.fontColor = .gray
+        scoreLabel.alpha = 0.8
 
         self.addChild(scoreLabel)
     }
@@ -86,6 +87,8 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
         myBall.lineWidth = CGFloat(life * 5)
         myBall.position = CGPoint(x: self.frame.midX, y: self.frame.midY - 300)
         self.addChild(myBall)
+
+        let path = CGP
     }
 
     func dropBall() {
@@ -168,6 +171,9 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
         myBall.lineWidth = CGFloat(life * 5)
 
         if life == 0 {
+            scoreLabel.alpha = 1.0
+            scoreLabel.zPosition = 100
+
             messageLabel.fontSize = 70
             messageLabel.fontColor = .gray
             messageLabel.fontName = "Helvetica"
