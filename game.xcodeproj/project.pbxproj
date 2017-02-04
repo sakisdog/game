@@ -30,7 +30,6 @@
 		515E5A371E40D2F70069942B /* pianoG.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 515E5A2F1E40D2F70069942B /* pianoG.mp3 */; };
 		515E5A421E421CDB0069942B /* TitleScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 515E5A401E421CDB0069942B /* TitleScene.sks */; };
 		515E5A431E421CDB0069942B /* TitleScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515E5A411E421CDB0069942B /* TitleScene.swift */; };
-		515E5A461E421FA30069942B /* SampleScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 515E5A441E421FA30069942B /* SampleScene.sks */; };
 		515E5A471E421FA30069942B /* SampleScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515E5A451E421FA30069942B /* SampleScene.swift */; };
 /* End PBXBuildFile section */
 
@@ -72,7 +71,6 @@
 		515E5A2F1E40D2F70069942B /* pianoG.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pianoG.mp3; sourceTree = "<group>"; };
 		515E5A401E421CDB0069942B /* TitleScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TitleScene.sks; sourceTree = "<group>"; };
 		515E5A411E421CDB0069942B /* TitleScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleScene.swift; sourceTree = "<group>"; };
-		515E5A441E421FA30069942B /* SampleScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SampleScene.sks; sourceTree = "<group>"; };
 		515E5A451E421FA30069942B /* SampleScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -116,7 +114,6 @@
 		5127B1091E3DB5F000232F9F /* game */ = {
 			isa = PBXGroup;
 			children = (
-				515E5A441E421FA30069942B /* SampleScene.sks */,
 				515E5A451E421FA30069942B /* SampleScene.swift */,
 				515E5A401E421CDB0069942B /* TitleScene.sks */,
 				515E5A411E421CDB0069942B /* TitleScene.swift */,
@@ -260,7 +257,6 @@
 				5127B11B1E3DB5F000232F9F /* LaunchScreen.storyboard in Resources */,
 				5127B10F1E3DB5F000232F9F /* Actions.sks in Resources */,
 				515E5A371E40D2F70069942B /* pianoG.mp3 in Resources */,
-				515E5A461E421FA30069942B /* SampleScene.sks in Resources */,
 				515E5A361E40D2F70069942B /* pianoF.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

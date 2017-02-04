@@ -18,7 +18,6 @@ class Ball: SKShapeNode {
         self.physicsBody?.linearDamping = 0
         self.physicsBody?.friction = 0
         self.physicsBody?.affectedByGravity = false
-        self.physicsBody?.velocity = CGVector(dx: 200, dy: -400)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -34,7 +33,7 @@ enum ballColors {
     case purple
     case black
 
-    func color() -> SKColor {
+    func color() -> UIColor {
         switch self {
         case .red:
             return SKColor(colorLiteralRed: 244, green: 67, blue: 54, alpha: 1.0)

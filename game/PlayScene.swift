@@ -87,8 +87,6 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
         myBall.lineWidth = CGFloat(life * 5)
         myBall.position = CGPoint(x: self.frame.midX, y: self.frame.midY - 300)
         self.addChild(myBall)
-
-        let path = CGP
     }
 
     func dropBall() {
@@ -105,12 +103,33 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
             ball.physicsBody?.contactTestBitMask = 3
             ball.physicsBody?.collisionBitMask = 3
         }
-        ball.position = CGPoint(x: myBall.frame.midX, y: self.frame.maxY - 20.0)
+        ball.physicsBody?.velocity = dropVelocity(
+            speed: CGFloat(200 + (50 * level)),
+            targetPoint: CGPoint(
+                x: myBall.frame.midX,
+                y: self.frame.maxY - myBall.frame.midY
+            )
+        )
+        ball.position = CGPoint(x: self.frame.midX, y: self.frame.maxY)
+
         self.addChild(ball)
 
         dropBallCount += 1
         screenBallCount += 1
     }
+
+
+    func dropVelocity(speed: CGFloat, targetPoint: CGPoint) -> CGVector {
+            let distance = sqrt(
+                (targetPoint.x * targetPoint.x) + (targetPoint.y * targetPoint.y)
+            )
+            let ratio = speed / distance
+            return CGVector(
+                dx: targetPoint.x * ratio,
+                dy: -(targetPoint.y * ratio)
+            )
+        }
+
 
     func playsSoundBallHits() {
         var soundFile = ""
@@ -216,7 +235,7 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
         }
         if level == 4 {
             messageLabel.fontSize = 50
-            messageLabel.fontColor = .orange
+            messageLabel.fontColor = SKColor.orange//.orange
             messageLabel.fontName = "Helvetica"
             messageLabel.text = "CLEAR!"
             messageLabel.zPosition = 100
