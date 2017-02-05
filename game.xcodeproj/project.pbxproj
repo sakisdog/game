@@ -18,8 +18,6 @@
 		5127B1181E3DB5F000232F9F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5127B1171E3DB5F000232F9F /* Assets.xcassets */; };
 		5127B11B1E3DB5F000232F9F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5127B1191E3DB5F000232F9F /* LaunchScreen.storyboard */; };
 		5127B1261E3DB5F000232F9F /* gameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5127B1251E3DB5F000232F9F /* gameTests.swift */; };
-		5127B1311E3DC56100232F9F /* PlayScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 5127B1301E3DC56100232F9F /* PlayScene.sks */; };
-		5127B1351E3DC61800232F9F /* PlayScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5127B1341E3DC61800232F9F /* PlayScene.swift */; };
 		515E5A1A1E3F76850069942B /* Ball.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515E5A191E3F76850069942B /* Ball.swift */; };
 		515E5A271E40C2210069942B /* MyBall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515E5A261E40C2210069942B /* MyBall.swift */; };
 		515E5A301E40D2F70069942B /* pianoA.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 515E5A281E40D2F70069942B /* pianoA.mp3 */; };
@@ -59,8 +57,6 @@
 		5127B1211E3DB5F000232F9F /* gameTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = gameTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5127B1251E3DB5F000232F9F /* gameTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gameTests.swift; sourceTree = "<group>"; };
 		5127B1271E3DB5F000232F9F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5127B1301E3DC56100232F9F /* PlayScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = PlayScene.sks; sourceTree = "<group>"; };
-		5127B1341E3DC61800232F9F /* PlayScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayScene.swift; sourceTree = "<group>"; };
 		515E5A191E3F76850069942B /* Ball.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ball.swift; sourceTree = "<group>"; };
 		515E5A261E40C2210069942B /* MyBall.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyBall.swift; sourceTree = "<group>"; };
 		515E5A281E40D2F70069942B /* pianoA.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pianoA.mp3; sourceTree = "<group>"; };
@@ -130,8 +126,6 @@
 				5127B1171E3DB5F000232F9F /* Assets.xcassets */,
 				5127B1191E3DB5F000232F9F /* LaunchScreen.storyboard */,
 				5127B11C1E3DB5F000232F9F /* Info.plist */,
-				5127B1301E3DC56100232F9F /* PlayScene.sks */,
-				5127B1341E3DC61800232F9F /* PlayScene.swift */,
 				515E5A191E3F76850069942B /* Ball.swift */,
 				515E5A261E40C2210069942B /* MyBall.swift */,
 				51027C691E45D7F600A18A65 /* UIColorExtension.swift */,
@@ -253,7 +247,6 @@
 			files = (
 				515E5A341E40D2F70069942B /* pianoD.mp3 in Resources */,
 				515E5A321E40D2F70069942B /* pianoC.mp3 in Resources */,
-				5127B1311E3DC56100232F9F /* PlayScene.sks in Resources */,
 				515E5A311E40D2F70069942B /* pianoB.mp3 in Resources */,
 				515E5A351E40D2F70069942B /* pianoE.mp3 in Resources */,
 				5127B1161E3DB5F000232F9F /* Main.storyboard in Resources */,
@@ -282,7 +275,6 @@
 			files = (
 				51027C701E46DA3600A18A65 /* CircleScene.swift in Sources */,
 				515E5A1A1E3F76850069942B /* Ball.swift in Sources */,
-				5127B1351E3DC61800232F9F /* PlayScene.swift in Sources */,
 				51027C721E474E2B00A18A65 /* SatelliteOrbital.swift in Sources */,
 				51027C621E45C3BB00A18A65 /* TitleScene.swift in Sources */,
 				51027C741E475ED700A18A65 /* GameScene.swift in Sources */,
