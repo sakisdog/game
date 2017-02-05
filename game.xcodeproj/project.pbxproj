@@ -7,10 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		51027C621E45C3BB00A18A65 /* TitleScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51027C601E45C3BB00A18A65 /* TitleScene.swift */; };
+		51027C6A1E45D7F600A18A65 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51027C691E45D7F600A18A65 /* UIColorExtension.swift */; };
+		51027C701E46DA3600A18A65 /* CircleScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51027C6F1E46DA3600A18A65 /* CircleScene.swift */; };
+		51027C721E474E2B00A18A65 /* SatelliteOrbital.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51027C711E474E2B00A18A65 /* SatelliteOrbital.swift */; };
+		51027C741E475ED700A18A65 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51027C731E475ED700A18A65 /* GameScene.swift */; };
 		5127B10B1E3DB5F000232F9F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5127B10A1E3DB5F000232F9F /* AppDelegate.swift */; };
-		5127B10D1E3DB5F000232F9F /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 5127B10C1E3DB5F000232F9F /* GameScene.sks */; };
-		5127B10F1E3DB5F000232F9F /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 5127B10E1E3DB5F000232F9F /* Actions.sks */; };
-		5127B1111E3DB5F000232F9F /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5127B1101E3DB5F000232F9F /* GameScene.swift */; };
 		5127B1131E3DB5F000232F9F /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5127B1121E3DB5F000232F9F /* GameViewController.swift */; };
 		5127B1161E3DB5F000232F9F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5127B1141E3DB5F000232F9F /* Main.storyboard */; };
 		5127B1181E3DB5F000232F9F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5127B1171E3DB5F000232F9F /* Assets.xcassets */; };
@@ -28,8 +30,6 @@
 		515E5A351E40D2F70069942B /* pianoE.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 515E5A2D1E40D2F70069942B /* pianoE.mp3 */; };
 		515E5A361E40D2F70069942B /* pianoF.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 515E5A2E1E40D2F70069942B /* pianoF.mp3 */; };
 		515E5A371E40D2F70069942B /* pianoG.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 515E5A2F1E40D2F70069942B /* pianoG.mp3 */; };
-		515E5A421E421CDB0069942B /* TitleScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 515E5A401E421CDB0069942B /* TitleScene.sks */; };
-		515E5A431E421CDB0069942B /* TitleScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515E5A411E421CDB0069942B /* TitleScene.swift */; };
 		515E5A471E421FA30069942B /* SampleScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515E5A451E421FA30069942B /* SampleScene.swift */; };
 /* End PBXBuildFile section */
 
@@ -44,11 +44,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		51027C601E45C3BB00A18A65 /* TitleScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleScene.swift; sourceTree = "<group>"; };
+		51027C691E45D7F600A18A65 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		51027C6F1E46DA3600A18A65 /* CircleScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleScene.swift; sourceTree = "<group>"; };
+		51027C711E474E2B00A18A65 /* SatelliteOrbital.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SatelliteOrbital.swift; sourceTree = "<group>"; };
+		51027C731E475ED700A18A65 /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		5127B1071E3DB5F000232F9F /* game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = game.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5127B10A1E3DB5F000232F9F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		5127B10C1E3DB5F000232F9F /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
-		5127B10E1E3DB5F000232F9F /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
-		5127B1101E3DB5F000232F9F /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		5127B1121E3DB5F000232F9F /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		5127B1151E3DB5F000232F9F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5127B1171E3DB5F000232F9F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -69,8 +71,6 @@
 		515E5A2D1E40D2F70069942B /* pianoE.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pianoE.mp3; sourceTree = "<group>"; };
 		515E5A2E1E40D2F70069942B /* pianoF.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pianoF.mp3; sourceTree = "<group>"; };
 		515E5A2F1E40D2F70069942B /* pianoG.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pianoG.mp3; sourceTree = "<group>"; };
-		515E5A401E421CDB0069942B /* TitleScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TitleScene.sks; sourceTree = "<group>"; };
-		515E5A411E421CDB0069942B /* TitleScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleScene.swift; sourceTree = "<group>"; };
 		515E5A451E421FA30069942B /* SampleScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -92,6 +92,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		51027C631E45CA0100A18A65 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		5127B0FE1E3DB5F000232F9F = {
 			isa = PBXGroup;
 			children = (
@@ -99,6 +106,7 @@
 				5127B1091E3DB5F000232F9F /* game */,
 				5127B1241E3DB5F000232F9F /* gameTests */,
 				5127B1081E3DB5F000232F9F /* Products */,
+				51027C631E45CA0100A18A65 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -114,13 +122,9 @@
 		5127B1091E3DB5F000232F9F /* game */ = {
 			isa = PBXGroup;
 			children = (
+				51027C601E45C3BB00A18A65 /* TitleScene.swift */,
 				515E5A451E421FA30069942B /* SampleScene.swift */,
-				515E5A401E421CDB0069942B /* TitleScene.sks */,
-				515E5A411E421CDB0069942B /* TitleScene.swift */,
 				5127B10A1E3DB5F000232F9F /* AppDelegate.swift */,
-				5127B10C1E3DB5F000232F9F /* GameScene.sks */,
-				5127B10E1E3DB5F000232F9F /* Actions.sks */,
-				5127B1101E3DB5F000232F9F /* GameScene.swift */,
 				5127B1121E3DB5F000232F9F /* GameViewController.swift */,
 				5127B1141E3DB5F000232F9F /* Main.storyboard */,
 				5127B1171E3DB5F000232F9F /* Assets.xcassets */,
@@ -130,6 +134,10 @@
 				5127B1341E3DC61800232F9F /* PlayScene.swift */,
 				515E5A191E3F76850069942B /* Ball.swift */,
 				515E5A261E40C2210069942B /* MyBall.swift */,
+				51027C691E45D7F600A18A65 /* UIColorExtension.swift */,
+				51027C6F1E46DA3600A18A65 /* CircleScene.swift */,
+				51027C711E474E2B00A18A65 /* SatelliteOrbital.swift */,
+				51027C731E475ED700A18A65 /* GameScene.swift */,
 			);
 			path = game;
 			sourceTree = "<group>";
@@ -244,18 +252,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				515E5A341E40D2F70069942B /* pianoD.mp3 in Resources */,
-				515E5A421E421CDB0069942B /* TitleScene.sks in Resources */,
 				515E5A321E40D2F70069942B /* pianoC.mp3 in Resources */,
 				5127B1311E3DC56100232F9F /* PlayScene.sks in Resources */,
 				515E5A311E40D2F70069942B /* pianoB.mp3 in Resources */,
 				515E5A351E40D2F70069942B /* pianoE.mp3 in Resources */,
 				5127B1161E3DB5F000232F9F /* Main.storyboard in Resources */,
-				5127B10D1E3DB5F000232F9F /* GameScene.sks in Resources */,
 				5127B1181E3DB5F000232F9F /* Assets.xcassets in Resources */,
 				515E5A301E40D2F70069942B /* pianoA.mp3 in Resources */,
 				515E5A331E40D2F70069942B /* pianoC2.mp3 in Resources */,
 				5127B11B1E3DB5F000232F9F /* LaunchScreen.storyboard in Resources */,
-				5127B10F1E3DB5F000232F9F /* Actions.sks in Resources */,
 				515E5A371E40D2F70069942B /* pianoG.mp3 in Resources */,
 				515E5A361E40D2F70069942B /* pianoF.mp3 in Resources */,
 			);
@@ -275,12 +280,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				51027C701E46DA3600A18A65 /* CircleScene.swift in Sources */,
 				515E5A1A1E3F76850069942B /* Ball.swift in Sources */,
 				5127B1351E3DC61800232F9F /* PlayScene.swift in Sources */,
-				5127B1111E3DB5F000232F9F /* GameScene.swift in Sources */,
-				515E5A431E421CDB0069942B /* TitleScene.swift in Sources */,
+				51027C721E474E2B00A18A65 /* SatelliteOrbital.swift in Sources */,
+				51027C621E45C3BB00A18A65 /* TitleScene.swift in Sources */,
+				51027C741E475ED700A18A65 /* GameScene.swift in Sources */,
 				515E5A471E421FA30069942B /* SampleScene.swift in Sources */,
 				5127B1131E3DB5F000232F9F /* GameViewController.swift in Sources */,
+				51027C6A1E45D7F600A18A65 /* UIColorExtension.swift in Sources */,
 				515E5A271E40C2210069942B /* MyBall.swift in Sources */,
 				5127B10B1E3DB5F000232F9F /* AppDelegate.swift in Sources */,
 			);
@@ -422,6 +430,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = X6PN9T739V;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = game/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = shindyu.game;
@@ -435,6 +447,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = X6PN9T739V;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = game/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = shindyu.game;

@@ -10,7 +10,7 @@ class Ball: SKShapeNode {
         self.lineWidth = 0
         self.zPosition = 1
 
-        self.physicsBody = SKPhysicsBody(circleOfRadius: 50.0)
+        self.physicsBody = SKPhysicsBody(circleOfRadius: 30.0)
         self.physicsBody?.categoryBitMask = 1
         self.physicsBody?.contactTestBitMask = 1
         self.physicsBody?.collisionBitMask = 1
@@ -36,17 +36,51 @@ enum ballColors {
     func color() -> UIColor {
         switch self {
         case .red:
-            return SKColor(colorLiteralRed: 244, green: 67, blue: 54, alpha: 1.0)
+            return UIColor().flatRed
         case .blue:
-            return SKColor(colorLiteralRed: 52, green: 152, blue: 219, alpha: 1.0)
+            return UIColor().flatBlue
         case .green:
-            return SKColor(colorLiteralRed: 46, green: 204, blue: 113, alpha: 1.0)
+            return UIColor().flatGreen
         case .yellow:
-            return SKColor(colorLiteralRed: 241, green: 196, blue: 15, alpha: 1.0)
+            return UIColor().flatYellow
         case .purple:
-            return SKColor(colorLiteralRed: 155, green: 89, blue: 182, alpha: 1.0)
+            return UIColor().flatPurple
         default:
-            return SKColor(colorLiteralRed: 52, green: 73, blue: 94, alpha: 1.0)
+            return UIColor().flatGray
+        }
+    }
+
+    func bodyColor() -> UIColor {
+        switch self {
+        case .red:
+            return UIColor().flatLightRed
+        case .blue:
+            return UIColor().flatLightBlue
+        case .green:
+            return UIColor().flatLightGreen
+        case .yellow:
+            return UIColor().flatLightYellow
+        case .purple:
+            return UIColor().flatLightPurple
+        default:
+            return UIColor().flatLightGray
+        }
+    }
+
+    func nightColor() -> UIColor {
+        switch self {
+        case .red:
+            return UIColor.rgb(r: 11, g: 188, b: 201, alpha: 1.0)
+        case .blue:
+            return UIColor.rgb(r: 203, g: 103, b: 36, alpha: 1.0)
+        case .green:
+            return UIColor.rgb(r: 209, g: 51, b: 142, alpha: 1.0)
+        case .yellow:
+            return UIColor.rgb(r: 14, g: 59, b: 240, alpha: 1.0)
+        case .purple:
+            return UIColor.rgb(r: 100, g: 166, b: 73, alpha: 1.0)
+        default:
+            return UIColor.rgb(r: 255, g: 255, b: 255, alpha: 1.0)
         }
     }
 
