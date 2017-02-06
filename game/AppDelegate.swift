@@ -1,12 +1,5 @@
-//
-//  AppDelegate.swift
-//  game
-//
-//  Created by shindyu on 2017/01/29.
-//  Copyright © 2017年 shindyu. All rights reserved.
-//
-
 import UIKit
+import AVFoundation
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +9,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+
+        // バックグラウンドでの音の再生を許可
+        let audioSession = AVAudioSession.sharedInstance()
+
+        do {
+            try audioSession.setCategory(AVAudioSessionCategoryAmbient)
+            try audioSession.setActive(true)
+        } catch let error as NSError {
+            print(error)
+        }
+
         return true
     }
 
