@@ -26,6 +26,7 @@ class TitleScene: SKScene {
     func touchDown(atPoint pos : CGPoint) {
         let touchedNode = scene?.atPoint(pos)
         if (touchedNode?.name == "start") {
+            self.removeAllChildren()
             let scene = GameScene(size: self.size)
             scene.scaleMode = .aspectFill
             self.view!.presentScene(scene)
@@ -39,7 +40,7 @@ class TitleScene: SKScene {
     }
 
     func initTitleLabel() {
-        titleLabel.text = "Frapper"
+        titleLabel.text = "frapper"
         titleLabel.position = CGPoint(x: self.frame.midX, y: self.frame.midY)
         titleLabel.fontSize = 100
         titleLabel.fontName = "Helvetica"
@@ -49,7 +50,6 @@ class TitleScene: SKScene {
     func initStartButton() {
         startButton.name = "start"
         startButton.text = "start"
-        //startButton.fontName = "Helvetica"
         startButton.fontSize = 50
         startButton.position = CGPoint(x: self.frame.midX, y: self.frame.midY - 150)
         startButton.fontColor = colors[myColorIndex].color()

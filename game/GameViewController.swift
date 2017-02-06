@@ -1,11 +1,3 @@
-//
-//  GameViewController.swift
-//  game
-//
-//  Created by shindyu on 2017/01/29.
-//  Copyright © 2017年 shindyu. All rights reserved.
-//
-
 import UIKit
 import SpriteKit
 import GameplayKit
@@ -16,12 +8,11 @@ class GameViewController: UIViewController {
         super.viewDidLoad()
         let scene = TitleScene(size: view.bounds.size)
         let skView = view as! SKView
-        skView.showsFPS = false
-        skView.showsNodeCount = false
+        skView.showsFPS = true
+        skView.showsNodeCount = true
         skView.ignoresSiblingOrder = true
         scene.scaleMode = .aspectFill
         skView.presentScene(scene)
-
     }
 
 

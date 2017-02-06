@@ -7,9 +7,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let scoreLabel = SKLabelNode()
     let messageLabel = SKLabelNode()
     let highScoreLabel = SKLabelNode()
-    let titleButton = SKLabelNode()
+    let pauseButton = SKLabelNode()
+    let unpauseButton = SKLabelNode()
+    let restartButton = SKLabelNode()
+    let exitButton = SKLabelNode()
     var myBall: MyBall!
-    var lastContactBallName: String = ""
     var totalScore: Int = 0
     var highScore: Int = 0
     var basePoint: Int = 1
@@ -38,8 +40,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
         myColorIndex = userDefaults.integer(forKey: "MyColor")
 
-        initScoreLabel()
         initMyBall()
+        initScoreLabel()
+        initHighScoreLabel()
+        initMessageLabel()
+        initPauseButton()
+        initRestartButton()
+        initExitButton()
+
 
         self.run(SKAction.repeatForever(
             SKAction.sequence([
@@ -50,27 +58,63 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if life > 0 { return }
         for t in touches { self.touchDown(atPoint: t.location(in: self)) }
     }
 
     func touchDown(atPoint pos : CGPoint) {
         let touchedNode = scene?.atPoint(pos)
-        if (touchedNode?.name == "titleButton") {
-            let nextScene = TitleScene(size: (self.view?.bounds.size)!)
-            nextScene.scaleMode = .aspectFill
-            self.view!.presentScene(nextScene)
+
+        if (touchedNode?.name == "pauseButton") {
+            pause()
+        } else if (touchedNode?.name == "restartButton") {
+            presentGameScene()
+        } else if (touchedNode?.name == "exitButton") {
+            presentTitleScene()
         } else {
-            let nextMyColorIndex = (Int)(arc4random_uniform(UInt32(3)))
-            userDefaults.set(nextMyColorIndex, forKey: "MyColor")
-            let nextScene = GameScene(size: (self.view?.bounds.size)!)
-            nextScene.scaleMode = .aspectFill
-            self.view!.presentScene(nextScene)
+            if self.isPaused {
+                unpause()
+            } else if life == 0 {
+                presentGameScene()
+            }
         }
     }
 
+    func pause() {
+        pauseButton.isHidden = true
+        restartButton.isHidden = false
+        exitButton.isHidden = false
+        scoreLabel.zPosition = 100
+        self.isPaused = true
+//        let pauseView = PauseView(scene: self, frame: self.frame)
+//        self.view?.addSubview(pauseView)
+    }
+
+    func unpause() {
+        pauseButton.isHidden = false
+        restartButton.isHidden = true
+        exitButton.isHidden = true
+        scoreLabel.zPosition = 0
+        self.isPaused = false
+    }
+
+    func presentGameScene() {
+        let nextMyColorIndex = (Int)(arc4random_uniform(UInt32(3)))
+        userDefaults.set(nextMyColorIndex, forKey: "MyColor")
+        let nextScene = GameScene(size: (self.view?.bounds.size)!)
+        nextScene.scaleMode = .aspectFill
+        self.view!.presentScene(nextScene)
+    }
+
+    func presentTitleScene() {
+        let nextScene = TitleScene(size: (self.view?.bounds.size)!)
+        nextScene.scaleMode = .aspectFill
+        self.view!.presentScene(nextScene)
+    }
 
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if self.isPaused {
+            return
+        }
         let touch: UITouch = touches.first!
         let location = touch.location(in: self)
         myBall.position = CGPoint(x: location.x, y: location.y)
@@ -78,26 +122,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         for t in touches { self.touchMoved(toPoint: t.location(in: self)) }
     }
 
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-    }
-
-    // MARK: - private
     func touchMoved(toPoint pos : CGPoint) {
         let moveAction = SKAction.move(to: pos, duration: 0.1)
         myBall.run(moveAction)
     }
 
-    func initScoreLabel() {
-        scoreLabel.text = "\(totalScore)"
-        scoreLabel.position = CGPoint(x: self.frame.midX, y: self.frame.midY)
-        scoreLabel.fontSize = 150
-        scoreLabel.fontName = "Helvetica"
-        scoreLabel.fontColor = .gray
-        scoreLabel.alpha = 0.8
-
-        self.addChild(scoreLabel)
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
     }
 
+    // MARK: - private
     func initMyBall() {
         myBall = MyBall(circleOfRadius: 30.0)
         myBall.colorType = colors[myColorIndex]
@@ -107,6 +140,79 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         myBall.position = CGPoint(x: self.frame.midX, y: self.frame.midY - 200)
 
         self.addChild(myBall)
+    }
+
+    func initScoreLabel() {
+        scoreLabel.text = "\(totalScore)"
+        scoreLabel.position = CGPoint(x: self.frame.midX, y: self.frame.midY)
+        scoreLabel.fontSize = 150
+        scoreLabel.fontName = "Helvetica"
+        scoreLabel.fontColor = .gray
+
+        self.addChild(scoreLabel)
+    }
+
+    func initPauseButton() {
+        pauseButton.name = "pauseButton"
+        pauseButton.text = "||"
+        pauseButton.fontColor = .gray
+        pauseButton.fontName = "Helvetica"
+        print(pauseButton.frame)
+        pauseButton.position = CGPoint(x: self.frame.maxX - 50, y: self.frame.maxY - 50)
+
+        self.addChild(pauseButton)
+    }
+
+    func initHighScoreLabel() {
+        highScore = userDefaults.integer(forKey: "HighScore")
+        highScoreLabel.isHidden = true
+        highScoreLabel.fontSize = 30
+        highScoreLabel.zPosition = 100
+        highScoreLabel.position = CGPoint(x: self.frame.midX, y: self.frame.midY - 130)
+        self.addChild(highScoreLabel)
+    }
+
+    func initMessageLabel() {
+        messageLabel.isHidden = true
+        messageLabel.fontSize = 50
+        messageLabel.fontColor = .gray
+        messageLabel.text = "GAME OVER"
+        messageLabel.zPosition = 100
+        messageLabel.position = CGPoint(x: self.frame.midX, y: self.frame.midY - 100)
+        self.addChild(messageLabel)
+    }
+
+    func initUnpauseButton() {
+        unpauseButton.isHidden = true
+        unpauseButton.text = "UnPause"
+        unpauseButton.name = "unpauseButton"
+        unpauseButton.fontSize = 30
+        unpauseButton.fontColor = .gray
+        unpauseButton.zPosition = 100
+        unpauseButton.position = CGPoint(x: self.frame.midX, y: self.frame.midY - 150)
+        self.addChild(unpauseButton)
+    }
+
+    func initRestartButton() {
+        restartButton.isHidden = true
+        restartButton.text = "Restart"
+        restartButton.name = "restartButton"
+        restartButton.fontSize = 30
+        restartButton.fontColor = .gray
+        restartButton.zPosition = 100
+        restartButton.position = CGPoint(x: self.frame.midX, y: self.frame.midY - 200)
+        self.addChild(restartButton)
+    }
+
+    func initExitButton() {
+        exitButton.isHidden = true
+        exitButton.text = "Exit to Menu"
+        exitButton.name = "exitButton"
+        exitButton.fontSize = 30
+        exitButton.fontColor = .gray
+        exitButton.zPosition = 100
+        exitButton.position = CGPoint(x: self.frame.midX, y: self.frame.midY - 250)
+        self.addChild(exitButton)
     }
 
     func dropBall() {
@@ -254,44 +360,29 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         scoreLabel.fontColor = .gray
 
         if life == 0 {
-            scoreLabel.zPosition = 100
-            scoreLabel.alpha = 1.0
+            pauseButton.isHidden = true
 
-            messageLabel.fontSize = 50
-            messageLabel.fontColor = .gray
-            //messageLabel.fontName = "Helvetica"
-            messageLabel.text = "GAME OVER"
-            messageLabel.zPosition = 100
-            messageLabel.position = CGPoint(x: self.frame.midX, y: self.frame.midY - 100)
-            self.addChild(messageLabel)
+            scoreLabel.zPosition = 100
+
+            messageLabel.isHidden = false
 
             myBall.removeFromParent()
 
 
-            highScore = userDefaults.integer(forKey: "HighScore")
+            highScoreLabel.isHidden = false
             if totalScore > highScore {
                 highScore = totalScore
                 userDefaults.set(highScore, forKey: "HighScore")
-                highScoreLabel.text = "NEW SCORE! : \(highScore)"
-                highScoreLabel.fontColor = colors[myColorIndex].color()
+                highScoreLabel.text = "NEW HIGH SCORE!"
+                highScoreLabel.fontColor = .orange
+                scoreLabel.fontColor = .orange
             } else {
-                highScoreLabel.text = "HIGH SCORE : \(highScore)"
+                highScoreLabel.text = "HIGH SCORE: \(highScore)"
                 highScoreLabel.fontColor = .gray
             }
-            highScoreLabel.fontSize = 30
-            //highScoreLabel.fontName = "Helvetica"
-            highScoreLabel.zPosition = 100
-            highScoreLabel.position = CGPoint(x: self.frame.midX, y: self.frame.midY - 150)
-            self.addChild(highScoreLabel)
 
-            titleButton.text = "Back to Title ↩︎"
-            titleButton.name = "titleButton"
-            titleButton.fontSize = 30
-            //titleButton.fontName = "Helvetica"
-            titleButton.fontColor = .gray
-            titleButton.zPosition = 100
-            titleButton.position = CGPoint(x: self.frame.midX, y: self.frame.midY - 300)
-            self.addChild(titleButton)
+
+            exitButton.isHidden = false
         }
     }
 
